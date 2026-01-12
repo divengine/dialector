@@ -739,13 +739,19 @@ function substr(str,start,len){
 
 		function scrollPreviewToCenter(c){
 			var $preview = $("#preview");
-			var $target = $(".preview-"+c).first();
-			if ($preview.length < 1 || $target.length < 1) return;
-			var targetTop = $target.offset().top - $preview.offset().top + $preview.scrollTop();
-			var targetHeight = $target.outerHeight();
+			var $line = $(".preview-"+c).first().closest(".code-line");
+			if ($preview.length < 1 || $line.length < 1) return;
+			var targetTop = $line.offset().top - $preview.offset().top + $preview.scrollTop();
+			var targetHeight = $line.outerHeight();
 			var previewHeight = $preview.height();
 			var nextTop = targetTop - (previewHeight / 2) + (targetHeight / 2);
 			$preview.scrollTop(nextTop);
+		}
+
+		function setActivePreviewLine(c){
+			$(".code-line").removeClass("is-active");
+			var $line = $(".preview-"+c).first().closest(".code-line");
+			if ($line.length > 0) $line.addClass("is-active");
 		}
 
 		function highlight(c, scroll){
@@ -755,9 +761,11 @@ function substr(str,start,len){
 			if (scroll=='constants'){
 				$(".preview-DIV_TAG_REPLACEMENT_PREFIX").focus();
 				$(".preview-"+c).focus();
+				setActivePreviewLine(c);
 				scrollPreviewToCenter(c);
 			} else if (scroll =='preview') {
 				$("#"+c).focus();
+				setActivePreviewLine(c);
 			}
 		
 		}
@@ -765,10 +773,98 @@ function substr(str,start,len){
 		function unhighlight(c){
 			$(".preview-"+c).removeClass('highlight');
 			$("#"+c).removeClass('highlight');
+			$(".code-line").removeClass("is-active");
 		}
 		
 		function str_repeat(input,multiplier){
 			return new Array(multiplier+1).join(input);
+		}
+
+		function normalizePreviewHtml(html){
+			var container = document.createElement("div");
+			container.innerHTML = html;
+			var parts = [];
+			var inlineTags = {
+				b: true,
+				i: true,
+				label: true,
+				span: true,
+				strong: true,
+				em: true
+			};
+
+			function append(text){
+				parts.push(text);
+			}
+
+			function walk(node){
+				if (node.nodeType === 3){
+					var text = node.nodeValue;
+					if (!text) return;
+					text = text.replace(/\u00a0/g, " ");
+					text = text.replace(/\s+/g, " ");
+					if (text.trim() === "") return;
+					append(text);
+					return;
+				}
+				if (node.nodeType !== 1) return;
+				var tag = node.tagName.toLowerCase();
+
+				if (tag === "br"){
+					append("\n");
+					return;
+				}
+				if (tag === "legend"){
+					append(node.textContent);
+					append("\n");
+					return;
+				}
+				if (tag === "button"){
+					append(node.outerHTML);
+					return;
+				}
+				if (inlineTags[tag]){
+					append(node.outerHTML);
+					return;
+				}
+
+				var isRow = tag === "tr";
+				var isCell = tag === "td" || tag === "th";
+				var isBlock = tag === "fieldset" || tag === "p" || tag === "div" || tag === "table" || tag === "pre" || isRow;
+
+				if (isBlock) append("\n");
+				var children = node.childNodes;
+				for (var i = 0; i < children.length; i++){
+					walk(children[i]);
+				}
+				if (isCell) append("  ");
+				if (isBlock) append("\n");
+			}
+
+			var children = container.childNodes;
+			for (var i = 0; i < children.length; i++){
+				walk(children[i]);
+			}
+
+			var normalized = parts.join("");
+			normalized = normalized.replace(/\r/g, "");
+			normalized = normalized.replace(/[ \t]+\n/g, "\n");
+			normalized = normalized.replace(/\n{3,}/g, "\n\n");
+			normalized = normalized.replace(/^\n+|\n+$/g, "");
+			return normalized;
+		}
+
+		function buildCodePreview(html){
+			var normalized = normalizePreviewHtml(html);
+			var lines = normalized.split("\n");
+			var out = '<div class="code-view">';
+			for (var i = 0; i < lines.length; i++){
+				var line = lines[i];
+				if (line.replace(/\s+/g, "") === "") line = "&nbsp;";
+				out += '<div class="code-line" data-line="' + (i + 1) + '"><span class="code-gutter">' + (i + 1) + '</span><span class="code-content">' + line + '</span></div>';
+			}
+			out += "</div>";
+			return out;
 		}
 
 		function strlen(string){
@@ -812,16 +908,16 @@ function substr(str,start,len){
 		}
 
 		function preview(){
-			
 			var html = document.getElementById('example').innerHTML;
+			var previewHtml = html;
 
 			for(var c in constants){
 			    var cc = htmlentities(constants[c]);
 				if (document.getElementById(c)!=null) cc = document.getElementById(c).value;
-				html = str_replace('{ ' + c + ' }', '<button class = "preview preview-' + c + '" title = "Click here for edit '+c+'" onmouseout="unhighlight(\'' + c + '\');" onmouseover="highlight(\'' + c + '\',\'\');" onclick="highlight(\'' + c + '\',\'preview\');">' + htmlentities(cc) + '</button>', html);				
+				previewHtml = str_replace('{ ' + c + ' }', '<button class = "preview preview-' + c + '" title = "Click here for edit '+c+'" onmouseout="unhighlight(\'' + c + '\');" onmouseover="highlight(\'' + c + '\',\'\');" onclick="highlight(\'' + c + '\',\'preview\');">' + htmlentities(cc) + '</button>', previewHtml);				
 			}
 
-			document.getElementById('preview').innerHTML = html;
+			document.getElementById('preview').innerHTML = buildCodePreview(previewHtml);
 			
 			html = '<span style="color:red;font-weight:bold;">&lt;?php</span>' + "\n\n<span style=\"color:green;\">/* Div PHP Template Engine Dialect - Generated by Div Dialect Creator - Last update " + date('Y-m-d') +" */</span> \n\n";
 			html += '<span style=\"color:green;\">/* IMPORTANT!: Include this file before you include div.php */</span>\n\n';

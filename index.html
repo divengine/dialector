@@ -265,184 +265,162 @@
 			</div>
 		</div>
 		<div style="display:none;" id="example">
-        
-<fieldset>
-	<legend>Variables</legend>
-	{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }person{ DIV_TAG_VAR_MEMBER_DELIMITER }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/><br/>
-</fieldset>
-<fieldset>
-	<legend>Replacements</legend>
-	{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/><br/>
-</fieldset>
-<fieldset>
-	<legend>Multi-modifiers:</legend>
-	{ DIV_TAG_MULTI_MODIFIERS_PREFIX }name{ DIV_TAG_MULTI_MODIFIERS_OPERATOR }{ DIV_TAG_MODIFIER_UPPERCASE }{ DIV_TAG_MULTI_MODIFIERS_SEPARATOR }{ DIV_TAG_MODIFIER_LOWERCASE }{ DIV_TAG_MULTI_MODIFIERS_SUFFIX }</b><br/>
-</fieldset>
-<fieldset>
-	<legend>Template vars</legend>
-	{ DIV_TAG_TPLVAR_BEGIN } { DIV_TAG_TPLVAR_PROTECTOR }products{ DIV_TAG_TPLVAR_ASSIGN_OPERATOR } [<br/>
-	&nbsp;&nbsp;{name: "Potato", price: 20},<br/>
-	&nbsp;&nbsp;{name: "Banana", price: 10}<br/>
-	]{ DIV_TAG_TPLVAR_END }<br/>
-</fieldset>
-<fieldset>
-	<legend>Data format</legend>
-	Dates: { DIV_TAG_DATE_FORMAT_PREFIX }div.now{ DIV_TAG_DATE_FORMAT_SEPARATOR }Y-m-d{ DIV_TAG_DATE_FORMAT_SUFFIX }<br/><br>
-	Numbers: { DIV_TAG_NUMBER_FORMAT_PREFIX }price{ DIV_TAG_NUMBER_FORMAT_SEPARATOR }2.,{ DIV_TAG_NUMBER_FORMAT_SUFFIX }<br/>
-</fieldset>
-<fieldset>
-	<legend>Variable's modifiers</legend>
-	<table><tr><td align="right">Simple</td><td> { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Capitalize first</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_CAPITALIZE_FIRST }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Capitalize words</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_CAPITALIZE_WORDS }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Upper case</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_UPPERCASE }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Lower case</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_LOWERCASE }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Length</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_LENGTH }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Words</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_COUNT_WORDS }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Sentences</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_COUNT_SENTENCES }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Paragraphs</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_COUNT_PARAGRAPHS }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">URL encode</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_ENCODE_URL }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Raw URL encode</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_ENCODE_RAW_URL }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">JSON encode</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_ENCODE_JSON }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">HTML entities</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_HTML_ENTITIES }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">New lines</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_NL2BR }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Truncate/Teaser</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }{ DIV_TAG_MODIFIER_TRUNCATE }100{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Word wrap</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }{ DIV_TAG_MODIFIER_WORDWRAP }100{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Substring</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }1{ DIV_TAG_MODIFIER_SUBSTRING_SEPARATOR }2{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Single quotes</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SINGLE_QUOTES }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Javascript</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_JS }name{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	<tr><td align="right">Format string</td><td>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }{ DIV_TAG_MODIFIER_FORMAT }.2f{ DIV_TAG_REPLACEMENT_SUFFIX }</td></tr>
-	</table>
-</fieldset>	
-<fieldset>
-	<legend>Aggregate functions</legend>
-	Count: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_COUNT }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
-	Maximum: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_MAX }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
-	Minimum: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_MIN }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
-	Average: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_AVG }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
-	Sum: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_SUM }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
-</fieldset>
-<fieldset>
-	<legend>Capsules</legend>
-	{ DIV_TAG_CAPSULE_BEGIN_PREFIX }entity{ DIV_TAG_CAPSULE_BEGIN_SUFFIX }<br/>
-	... some code here ...<br/>
-	{ DIV_TAG_CAPSULE_END_PREFIX }entity{ DIV_TAG_CAPSULE_END_SUFFIX }<br/>
-</fieldset>
-<fieldset>
-	<legend>Content's tags</legend>
-	<b>Teaser break</b>: <br/>
-	<p>Lorem ipsum dolor sit amet, { DIV_TAG_TEASER_BREAK }  Excepteur sint ...</p>
-</fieldset>
-<fieldset>
-	<legend>Convert next HTML into text</legend>
-	{ DIV_TAG_TXT_BEGIN } 150 { DIV_TAG_TXT_WIDTH_SEPARATOR }<br/>
-	&lt;p>Hello World&lt;/p><br/>
-	{ DIV_TAG_TXT_END }<br/>
-</fieldset>
-<fieldset>
-	<legend>Custom subparsers</legend>
-	{ DIV_TAG_SUBPARSER_BEGIN_PREFIX }myparser{ DIV_TAG_SUBPARSER_BEGIN_SUFFIX }<br/>
-	... some code here ...<br/>
-	{ DIV_TAG_SUBPARSER_END_PREFIX }myparser{ DIV_TAG_SUBPARSER_END_SUFFIX }<br/>
-</fieldset>
-<fieldset>
-	<legend>Multiple replacements</legend>
-	{ DIV_TAG_MULTI_REPLACEMENT_BEGIN_PREFIX }replaceall{ DIV_TAG_MULTI_REPLACEMENT_BEGIN_SUFFIX }<br/>
-	... some code to replace their parts ...<br/>
-	{ DIV_TAG_MULTI_REPLACEMENT_END_PREFIX }replaceall{ DIV_TAG_MULTI_REPLACEMENT_END_SUFFIX }<br/>
-</fieldset>
-<fieldset>
-	<legend>Formulas</legend>
-	{ DIV_TAG_FORMULA_BEGIN } 1 + 2 + 3 { DIV_TAG_FORMULA_FORMAT_SEPARATOR } 2,. { DIV_TAG_FORMULA_END }
-</fieldset>	
-<fieldset>
-	<legend>Simple blocks</legend>
-	<b>Ignore</b>:<br/><br/>
-	{ DIV_TAG_IGNORE_BEGIN }<br/>
-	... some ignored code here ...<br/>
-	{ DIV_TAG_IGNORE_END }<br/><br/><br/>
-	<b>Comments</b><br/><br/>
-	{ DIV_TAG_COMMENT_BEGIN } 
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
-	tempor incididunt ut labore et dolore magna aliqua { DIV_TAG_COMMENT_END }<br/><br/>
-	<b>Strips</b><br/><br/>
-	{ DIV_TAG_STRIP_BEGIN }<br/>
-	<br/>
-	... some ugly code here ...
-	<br/>
-	{ DIV_TAG_STRIP_END }
-	<br/>
-	<b>Friendly tags</b><br/><br/>
-	{ DIV_TAG_FRIENDLY_BEGIN } { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX } { DIV_TAG_FRIENDLY_END }<br/>
-	<br/>
-	<b>Macros</b><br/><br/>
-	{ DIV_TAG_MACRO_BEGIN }<br/>
-	// some macro here<br/>
-	$a = 5;<br/>
-	{ DIV_TAG_MACRO_END }<br/>
-</fieldset>
-<fieldset>
-	<legend>Rigid blocks</legend>
-	Default replacement: <br/>{ DIV_TAG_DEFAULT_REPLACEMENT_BEGIN } [true, 'YES'] { DIV_TAG_DEFAULT_REPLACEMENT_END }<br/>
-	<br/>Includes: <br/>{ DIV_TAG_INCLUDE_BEGIN }header{ DIV_TAG_INCLUDE_END }<br/>
-	<br/>Pre-processed: <br/>{ DIV_TAG_PREPROCESSED_BEGIN }footer{ DIV_TAG_PREPROCESSED_END }<br/>
-	<br/>Locations: <br/>{ DIV_TAG_LOCATION_BEGIN }header_left{ DIV_TAG_LOCATION_END }
-</fieldset>
-<fieldset>
-		<legend>Special replacements</legend>
-		New line (\n): { DIV_TAG_SPECIAL_REPLACE_NEW_LINE }<br/>
-		Car return (\r): { DIV_TAG_SPECIAL_REPLACE_CAR_RETURN }<br/>
-		Horizontal tab {\t}: { DIV_TAG_SPECIAL_REPLACE_HORIZONTAL_TAB }<br/>
-		Vertical tab {\v}:  { DIV_TAG_SPECIAL_REPLACE_VERTICAL_TAB }<br/>
-		Next page (\f): { DIV_TAG_SPECIAL_REPLACE_NEXT_PAGE }<br/>
-		Dollar symbol: { DIV_TAG_SPECIAL_REPLACE_DOLLAR_SYMBOL }<br/>
-</fieldset>
-<fieldset>
-	<legend>Location's contents</legend>
-	{ DIV_TAG_LOCATION_CONTENT_BEGIN_PREFIX }header_left{ DIV_TAG_LOCATION_CONTENT_BEGIN_SUFFIX }<br/>
-	&nbsp;&nbsp;&nbsp;&lt;img src="logo.png"&gt;<br/>
-	{ DIV_TAG_LOCATION_CONTENT_END_PREFIX }header_left{ DIV_TAG_LOCATION_CONTENT_END_SUFFIX }<br/>
-</fieldset> 
-<fieldset>
-	<legend>Loops</legend>
-	{ DIV_TAG_LOOP_BEGIN_PREFIX }products{ DIV_TAG_LOOP_BEGIN_SUFFIX }<br/>
-	&nbsp;&nbsp;&nbsp;Name: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
-	{ DIV_TAG_EMPTY }<br/>
-	&nbsp;&nbsp;&nbsp;No products<br/>
-	{ DIV_TAG_LOOP_END_PREFIX }products{ DIV_TAG_LOOP_END_SUFFIX }<br/><br/>
-</fieldset>
-<fieldset>
-	<legend>Iterations</legend>
-	{ DIV_TAG_ITERATION_BEGIN_PREFIX }1{ DIV_TAG_ITERATION_PARAM_SEPARATOR }10{ DIV_TAG_ITERATION_PARAM_SEPARATOR }i{ DIV_TAG_ITERATION_PARAM_SEPARATOR }2{ DIV_TAG_ITERATION_BEGIN_SUFFIX }
-	{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }i{ DIV_TAG_REPLACEMENT_SUFFIX }
-	{ DIV_TAG_ITERATION_END }
-</fieldset>
-<fieldset>
-	<legend>Conditional's parts</legend>
-	TRUE parts<br/><br/>
-	{ DIV_TAG_CONDITIONAL_TRUE_BEGIN_PREFIX }show{ DIV_TAG_CONDITIONAL_TRUE_BEGIN_SUFFIX }<br/>
-	&nbsp;&nbsp;&nbsp;Show something...<br/>
-	{ DIV_TAG_ELSE }<br/>
-	&nbsp;&nbsp;&nbsp;Show another something...<br/>
-	{ DIV_TAG_CONDITIONAL_TRUE_END_PREFIX }show{ DIV_TAG_CONDITIONAL_TRUE_END_SUFFIX }<br/>
-	<br/>
-	FALSE parts<br/><br/>
-	{ DIV_TAG_CONDITIONAL_FALSE_BEGIN_PREFIX }show{ DIV_TAG_CONDITIONAL_FALSE_BEGIN_SUFFIX }<br/>
-	&nbsp;&nbsp;&nbsp;Show another something...<br/>
-	{ DIV_TAG_ELSE }<br/>
-	&nbsp;&nbsp;&nbsp;Show something...<br/>
-	{ DIV_TAG_CONDITIONAL_FALSE_END_PREFIX }show{ DIV_TAG_CONDITIONAL_FALSE_END_SUFFIX }<br/>
-</fieldset>
-<fieldset>
-<legend>Conditions</legend>
-	{ DIV_TAG_CONDITIONS_BEGIN_PREFIX } { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }number{ DIV_TAG_REPLACEMENT_SUFFIX } > 5 { DIV_TAG_CONDITIONS_BEGIN_SUFFIX }<br/>
-	&nbsp;&nbsp;&nbsp;The number is bigger <br/>
-	&nbsp;&nbsp;&nbsp;than five<br/>
-	{ DIV_TAG_ELSE }<br/>
-	&nbsp;&nbsp;&nbsp;The number is not bigger <br/>
-	&nbsp;&nbsp;&nbsp;than five<br/>
-	{ DIV_TAG_CONDITIONS_END }
-</fieldset>
+			<span class="section-title">Variables</span><br/>
+			{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }person{ DIV_TAG_VAR_MEMBER_DELIMITER }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Replacements</span><br/>
+			{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Multi-modifiers</span><br/>
+			{ DIV_TAG_MULTI_MODIFIERS_PREFIX }name{ DIV_TAG_MULTI_MODIFIERS_OPERATOR }{ DIV_TAG_MODIFIER_UPPERCASE }{ DIV_TAG_MULTI_MODIFIERS_SEPARATOR }{ DIV_TAG_MODIFIER_LOWERCASE }{ DIV_TAG_MULTI_MODIFIERS_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Template vars</span><br/>
+			{ DIV_TAG_TPLVAR_BEGIN } { DIV_TAG_TPLVAR_PROTECTOR }products{ DIV_TAG_TPLVAR_ASSIGN_OPERATOR } [<br/>
+			<span class="indent indent-2"></span>{name: "Potato", price: 20},<br/>
+			<span class="indent indent-2"></span>{name: "Banana", price: 10}<br/>
+			]{ DIV_TAG_TPLVAR_END }<br/>
+			<br/>
+			<span class="section-title">Data format</span><br/>
+			Dates: { DIV_TAG_DATE_FORMAT_PREFIX }div.now{ DIV_TAG_DATE_FORMAT_SEPARATOR }Y-m-d{ DIV_TAG_DATE_FORMAT_SUFFIX }<br/>
+			Numbers: { DIV_TAG_NUMBER_FORMAT_PREFIX }price{ DIV_TAG_NUMBER_FORMAT_SEPARATOR }2.,{ DIV_TAG_NUMBER_FORMAT_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Variable's modifiers</span><br/>
+			Simple: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Capitalize first: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_CAPITALIZE_FIRST }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Capitalize words: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_CAPITALIZE_WORDS }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Upper case: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_UPPERCASE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Lower case: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_LOWERCASE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Length: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_LENGTH }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Words: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_COUNT_WORDS }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Sentences: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_COUNT_SENTENCES }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Paragraphs: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_COUNT_PARAGRAPHS }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			URL encode: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_ENCODE_URL }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Raw URL encode: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_ENCODE_RAW_URL }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			JSON encode: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_ENCODE_JSON }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			HTML entities: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_HTML_ENTITIES }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			New lines: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_NL2BR }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Truncate/Teaser: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }{ DIV_TAG_MODIFIER_TRUNCATE }100{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Word wrap: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }{ DIV_TAG_MODIFIER_WORDWRAP }100{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Substring: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }1{ DIV_TAG_MODIFIER_SUBSTRING_SEPARATOR }2{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Single quotes: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SINGLE_QUOTES }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Javascript: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_JS }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Format string: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_SUBMATCH_SEPARATOR }{ DIV_TAG_MODIFIER_FORMAT }.2f{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Aggregate functions</span><br/>
+			Count: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_COUNT }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Maximum: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_MAX }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Minimum: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_MIN }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Average: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_AVG }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			Sum: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_AGGREGATE_FUNCTION_SUM }{ DIV_TAG_AGGREGATE_FUNCTION_SEPARATOR }products{ DIV_TAG_AGGREGATE_FUNCTION_PROPERTY_SEPARATOR }price{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Capsules</span><br/>
+			{ DIV_TAG_CAPSULE_BEGIN_PREFIX }entity{ DIV_TAG_CAPSULE_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>... some code here ...<br/>
+			{ DIV_TAG_CAPSULE_END_PREFIX }entity{ DIV_TAG_CAPSULE_END_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Content's tags</span><br/>
+			Teaser break:<br/>
+			<span class="indent indent-2"></span>&lt;p>Lorem ipsum dolor sit amet, { DIV_TAG_TEASER_BREAK } Excepteur sint ...&lt;/p><br/>
+			<br/>
+			<span class="section-title">Convert next HTML into text</span><br/>
+			{ DIV_TAG_TXT_BEGIN } 150 { DIV_TAG_TXT_WIDTH_SEPARATOR }<br/>
+			<span class="indent indent-2"></span>&lt;p>Hello World&lt;/p><br/>
+			{ DIV_TAG_TXT_END }<br/>
+			<br/>
+			<span class="section-title">Custom subparsers</span><br/>
+			{ DIV_TAG_SUBPARSER_BEGIN_PREFIX }myparser{ DIV_TAG_SUBPARSER_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>... some code here ...<br/>
+			{ DIV_TAG_SUBPARSER_END_PREFIX }myparser{ DIV_TAG_SUBPARSER_END_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Multiple replacements</span><br/>
+			{ DIV_TAG_MULTI_REPLACEMENT_BEGIN_PREFIX }replaceall{ DIV_TAG_MULTI_REPLACEMENT_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>... some code to replace their parts ...<br/>
+			{ DIV_TAG_MULTI_REPLACEMENT_END_PREFIX }replaceall{ DIV_TAG_MULTI_REPLACEMENT_END_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Formulas</span><br/>
+			{ DIV_TAG_FORMULA_BEGIN } 1 + 2 + 3 { DIV_TAG_FORMULA_FORMAT_SEPARATOR } 2,. { DIV_TAG_FORMULA_END }<br/>
+			<br/>
+			<span class="section-title">Simple blocks</span><br/>
+			Ignore:<br/>
+			{ DIV_TAG_IGNORE_BEGIN }<br/>
+			<span class="indent indent-2"></span>... some ignored code here ...<br/>
+			{ DIV_TAG_IGNORE_END }<br/>
+			<br/>
+			Comments:<br/>
+			{ DIV_TAG_COMMENT_BEGIN }<br/>
+			<span class="indent indent-2"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br/>
+			<span class="indent indent-2"></span>tempor incididunt ut labore et dolore magna aliqua { DIV_TAG_COMMENT_END }<br/>
+			<br/>
+			Strips:<br/>
+			{ DIV_TAG_STRIP_BEGIN }<br/>
+			<br/>
+			<span class="indent indent-2"></span>... some ugly code here ...<br/>
+			<br/>
+			{ DIV_TAG_STRIP_END }<br/>
+			<br/>
+			Friendly tags:<br/>
+			{ DIV_TAG_FRIENDLY_BEGIN } { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX } { DIV_TAG_FRIENDLY_END }<br/>
+			<br/>
+			Macros:<br/>
+			{ DIV_TAG_MACRO_BEGIN }<br/>
+			<span class="indent indent-2"></span>// some macro here<br/>
+			<span class="indent indent-2"></span>$a = 5;<br/>
+			{ DIV_TAG_MACRO_END }<br/>
+			<br/>
+			<span class="section-title">Rigid blocks</span><br/>
+			Default replacement: { DIV_TAG_DEFAULT_REPLACEMENT_BEGIN } [true, 'YES'] { DIV_TAG_DEFAULT_REPLACEMENT_END }<br/>
+			Includes: { DIV_TAG_INCLUDE_BEGIN }header{ DIV_TAG_INCLUDE_END }<br/>
+			Pre-processed: { DIV_TAG_PREPROCESSED_BEGIN }footer{ DIV_TAG_PREPROCESSED_END }<br/>
+			Locations: { DIV_TAG_LOCATION_BEGIN }header_left{ DIV_TAG_LOCATION_END }<br/>
+			<br/>
+			<span class="section-title">Special replacements</span><br/>
+			New line (\n): { DIV_TAG_SPECIAL_REPLACE_NEW_LINE }<br/>
+			Car return (\r): { DIV_TAG_SPECIAL_REPLACE_CAR_RETURN }<br/>
+			Horizontal tab {\t}: { DIV_TAG_SPECIAL_REPLACE_HORIZONTAL_TAB }<br/>
+			Vertical tab {\v}: { DIV_TAG_SPECIAL_REPLACE_VERTICAL_TAB }<br/>
+			Next page (\f): { DIV_TAG_SPECIAL_REPLACE_NEXT_PAGE }<br/>
+			Dollar symbol: { DIV_TAG_SPECIAL_REPLACE_DOLLAR_SYMBOL }<br/>
+			<br/>
+			<span class="section-title">Location's contents</span><br/>
+			{ DIV_TAG_LOCATION_CONTENT_BEGIN_PREFIX }header_left{ DIV_TAG_LOCATION_CONTENT_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>&lt;img src="logo.png"&gt;<br/>
+			{ DIV_TAG_LOCATION_CONTENT_END_PREFIX }header_left{ DIV_TAG_LOCATION_CONTENT_END_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Loops</span><br/>
+			{ DIV_TAG_LOOP_BEGIN_PREFIX }products{ DIV_TAG_LOOP_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>Name: { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }name{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			<span class="indent indent-2"></span>{ DIV_TAG_EMPTY }<br/>
+			<span class="indent indent-2"></span>No products<br/>
+			{ DIV_TAG_LOOP_END_PREFIX }products{ DIV_TAG_LOOP_END_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Iterations</span><br/>
+			{ DIV_TAG_ITERATION_BEGIN_PREFIX }1{ DIV_TAG_ITERATION_PARAM_SEPARATOR }10{ DIV_TAG_ITERATION_PARAM_SEPARATOR }i{ DIV_TAG_ITERATION_PARAM_SEPARATOR }2{ DIV_TAG_ITERATION_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>{ DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }i{ DIV_TAG_REPLACEMENT_SUFFIX }<br/>
+			{ DIV_TAG_ITERATION_END }<br/>
+			<br/>
+			<span class="section-title">Conditional's parts</span><br/>
+			TRUE parts<br/>
+			{ DIV_TAG_CONDITIONAL_TRUE_BEGIN_PREFIX }show{ DIV_TAG_CONDITIONAL_TRUE_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>Show something...<br/>
+			{ DIV_TAG_ELSE }<br/>
+			<span class="indent indent-2"></span>Show another something...<br/>
+			{ DIV_TAG_CONDITIONAL_TRUE_END_PREFIX }show{ DIV_TAG_CONDITIONAL_TRUE_END_SUFFIX }<br/>
+			<br/>
+			FALSE parts<br/>
+			{ DIV_TAG_CONDITIONAL_FALSE_BEGIN_PREFIX }show{ DIV_TAG_CONDITIONAL_FALSE_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>Show another something...<br/>
+			{ DIV_TAG_ELSE }<br/>
+			<span class="indent indent-2"></span>Show something...<br/>
+			{ DIV_TAG_CONDITIONAL_FALSE_END_PREFIX }show{ DIV_TAG_CONDITIONAL_FALSE_END_SUFFIX }<br/>
+			<br/>
+			<span class="section-title">Conditions</span><br/>
+			{ DIV_TAG_CONDITIONS_BEGIN_PREFIX } { DIV_TAG_REPLACEMENT_PREFIX }{ DIV_TAG_MODIFIER_SIMPLE }number{ DIV_TAG_REPLACEMENT_SUFFIX } > 5 { DIV_TAG_CONDITIONS_BEGIN_SUFFIX }<br/>
+			<span class="indent indent-2"></span>The number is bigger<br/>
+			<span class="indent indent-2"></span>than five<br/>
+			{ DIV_TAG_ELSE }<br/>
+			<span class="indent indent-2"></span>The number is not bigger<br/>
+			<span class="indent indent-2"></span>than five<br/>
+			{ DIV_TAG_CONDITIONS_END }
 		</div>
 		<pre id="phpcode"></pre>
 		<div id="modal-overlay" class="modal-overlay" aria-hidden="true">
